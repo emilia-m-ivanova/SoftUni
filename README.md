@@ -1,2 +1,2 @@
 # SoftUni
-Course exercises
+Exercises from courses taken at SoftUni
