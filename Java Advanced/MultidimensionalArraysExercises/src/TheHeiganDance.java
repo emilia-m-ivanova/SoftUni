@@ -11,7 +11,7 @@ public class TheHeiganDance {
         String killedBy = "";
         boolean activeCloud = false;
         while (player > 0 && heigan > 0) {
-            int[][] matrix = new int[15][15];
+            boolean[][] matrix = new boolean[15][15];
             if (activeCloud) {
                 player -= 3500;
                 activeCloud = false;
@@ -30,26 +30,26 @@ public class TheHeiganDance {
             for (int r = -1; r <= 1; r++) {
                 for (int c = -1; c <= 1; c++) {
                     if (positionIsValid(matrix, row - r, col - c)) {
-                        matrix[row - r][col - c] = -1;
+                        matrix[row - r][col - c] = true;
                     }
                 }
             }
-            if (matrix[currentRow][currentCol] == -1) {
+            if (matrix[currentRow][currentCol]) {
                 if (positionIsValid(matrix, currentRow - 1, currentCol) &&
-                        matrix[currentRow - 1][currentCol] == 0) {
+                        !matrix[currentRow - 1][currentCol]) {
                     currentRow--;
                 } else if (positionIsValid(matrix, currentRow, currentCol + 1) &&
-                        matrix[currentRow][currentCol + 1] == 0) {
+                        !matrix[currentRow][currentCol + 1]) {
                     currentCol++;
                 } else if (positionIsValid(matrix, currentRow + 1, currentCol) &&
-                        matrix[currentRow + 1][currentCol] == 0) {
+                        !matrix[currentRow + 1][currentCol]) {
                     currentRow++;
                 } else if (positionIsValid(matrix, currentRow, currentCol - 1) &&
-                        matrix[currentRow][currentCol - 1] == 0) {
+                        !matrix[currentRow][currentCol - 1]) {
                     currentCol--;
                 }
             }
-            if (matrix[currentRow][currentCol] == 0) {
+            if (!matrix[currentRow][currentCol]) {
                 continue;
             }
             switch (spell) {
@@ -86,7 +86,7 @@ public class TheHeiganDance {
         System.out.printf("Final position: %d, %d", currentRow, currentCol);
     }
 
-    private static boolean positionIsValid(int[][] matrix, int row, int col) {
+    private static boolean positionIsValid(boolean[][] matrix, int row, int col) {
         return row >= 0 && row < matrix.length
                 && col >= 0 && col < matrix[row].length;
     }
