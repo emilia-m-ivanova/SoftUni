@@ -10,7 +10,7 @@ public class TheHeiganDance {
         int currentCol = 7;
         String killedBy = "";
         boolean activeCloud = false;
-        while (player > 0 && heigan > 0) {
+        while (player > 0) {
             boolean[][] matrix = new boolean[15][15];
             if (activeCloud) {
                 player -= 3500;
