@@ -13,18 +13,17 @@ public class VoinaNumberGame {
                 .map(Integer::parseInt).collect(Collectors.toCollection(LinkedHashSet::new));
         int round = 50;
         while (round-->0 && !firstPlayer.isEmpty() && !secondPlayer.isEmpty()){
-            int firstCard = firstPlayer.iterator().next();
-            int secondCard = secondPlayer.iterator().next();
+            Integer firstCard = firstPlayer.iterator().next();
+            Integer secondCard = secondPlayer.iterator().next();
             firstPlayer.remove(firstCard);
             secondPlayer.remove(secondCard);
             if(firstCard>secondCard){
                 firstPlayer.add(firstCard);
                 firstPlayer.add(secondCard);
-            }else {
+            }else if(secondCard>firstCard) {
                 secondPlayer.add(firstCard);
                 secondPlayer.add(secondCard);
             }
-            round--;
         }
         if(firstPlayer.size()<secondPlayer.size()){
             System.out.println("Second player win!");
