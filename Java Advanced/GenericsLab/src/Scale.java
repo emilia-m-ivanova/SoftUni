@@ -11,7 +11,7 @@ public class Scale <T extends Comparable<T>>{
         if(this.left.compareTo(this.right)==0){
             return null;
         }
-        if(this.left.compareTo(this.right)==1){
+        if(this.left.compareTo(this.right) > 0){
             return this.left;
         }
         return this.right;
