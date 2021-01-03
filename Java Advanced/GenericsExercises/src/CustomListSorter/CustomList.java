@@ -1,4 +1,4 @@
-package CustomList;
+package CustomListSorter;
 
 import java.util.NoSuchElementException;
 
@@ -12,11 +12,23 @@ public class CustomList<T extends Comparable<T>> {
         this.size = 0;
     }
 
+    public int getSize() {
+        return this.size;
+    }
+
     public void add(T element) {
         if (this.size == this.elements.length) {
             this.elements = grow(this.elements);
         }
         this.elements[size++] = element;
+    }
+
+    @SuppressWarnings("unchecked")
+    public T get(int index) throws IndexOutOfBoundsException {
+        if (indexIsInBounds(index)) {
+            return (T) this.elements[index];
+        }
+        throw new IndexOutOfBoundsException("Index " + index + " is out of bounds for size " + this.size);
     }
 
     private Object[] grow(Object[] elements) {
@@ -32,7 +44,7 @@ public class CustomList<T extends Comparable<T>> {
             if (this.size - 1 - index >= 0) {
                 System.arraycopy(this.elements, index + 1, this.elements, index, this.size - 1 - index);
             }
-            this.elements[size-1] = null;
+            this.elements[size - 1] = null;
             this.size--;
             if (this.size == elements.length / 3) {
                 this.elements = shrink(this.elements);
