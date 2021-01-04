@@ -2,7 +2,7 @@ package GenericSwapMethodString;
 
 import java.util.List;
 
-public class ListManipulator<T> {
+public class ListManipulator {
 
     public static <T> void swapElements(List<T> list,int swapIndex1, int swapIndex2){
         T element = list.get(swapIndex1);
@@ -11,9 +11,11 @@ public class ListManipulator<T> {
     }
 
     public static <T> void printElements (List<T> list){
+        StringBuilder sb = new StringBuilder();
         for (T t : list) {
-            System.out.println(t.getClass().getName() + ": " + t);
+            sb.append(t.getClass().getName()).append(": ").append(t).append(System.lineSeparator());
         }
+        System.out.print(sb);
     }
 
 }
