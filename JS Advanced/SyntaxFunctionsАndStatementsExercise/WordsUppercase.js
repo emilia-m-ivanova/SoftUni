@@ -5,5 +5,3 @@ function makeUpperCase (input) {
     }
     return input.join(', ');
 }
-console.log(makeUpperCase('Hi, how are you?'));
-console.log(makeUpperCase('hello'));
