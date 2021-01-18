@@ -6,7 +6,7 @@ function solve(moves) {
     let player = 'X';
     while (!boardIsFull()) {
         let playerCoordinates = [Number(moves[i][0]), Number(moves[i++][2])];
-        if (i < moves.length && checkPosition(playerCoordinates) !== false) {
+        if (checkPosition(playerCoordinates) !== false) {
             console.log('This place is already taken. Please choose another!')
             continue;
         }
@@ -19,9 +19,6 @@ function solve(moves) {
             return;
         }
 
-        if (boardIsFull()) {
-            break;
-        }
         player = player === 'X' ? 'O' : 'X';
     }
 
@@ -29,14 +26,7 @@ function solve(moves) {
     printBoard();
 
     function boardIsFull() {
-        for (const row of board) {
-            for (const element of row) {
-                if (element === false) {
-                    return false;
-                }
-            }
-        }
-        return true;
+        return board.flat().every(e=>e!==false);
     }
 
     function printBoard() {
