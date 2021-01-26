@@ -10,11 +10,10 @@ function solve() {
     selectMenu.appendChild(binary);
 
     function onClick() {
-        const options = Array.from(selectMenu.children);
         let number = Number(document.querySelector('#input').value);
-        if(options[1].selected){
+        if(selectMenu.value ==='hexadecimal'){
             number = number.toString(16).toUpperCase();
-        }else if(options[2].selected){
+        }else{
             number = number.toString(2);
         }
         document.querySelector('#result').value = number;
