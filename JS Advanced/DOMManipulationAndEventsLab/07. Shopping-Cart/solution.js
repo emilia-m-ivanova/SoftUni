@@ -1,6 +1,5 @@
 function solve() {
-    const shoppingCart = document.querySelector('div.shopping-cart');
-    shoppingCart.addEventListener('click',onClick);
+    document.querySelector('div.shopping-cart').addEventListener('click',onClick);
     let textArea = document.querySelector('div.shopping-cart>textarea');
     const products = [];
     let totalPrice = 0;
