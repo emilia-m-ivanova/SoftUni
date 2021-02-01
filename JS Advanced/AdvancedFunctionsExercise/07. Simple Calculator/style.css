@@ -1,0 +1,13 @@
+body {
+    background-color: #ccc;
+    color: white;
+}
+
+.container {
+    margin: 50px auto 0;
+    border-radius: 10px;
+    width: 400px;
+    background-color: #303333;
+    text-align: center;
+    border: solid 2px #3786c7;
+}
