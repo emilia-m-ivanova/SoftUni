@@ -1,0 +1,8 @@
+{
+  "name": "Exam Prep 1 - 12.02.2021",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.3.0"
+  }
+}
