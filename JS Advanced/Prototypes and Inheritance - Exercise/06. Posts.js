@@ -48,10 +48,3 @@ function solve() {
 
     return {Post, SocialMediaPost,BlogPost};
 }
-
-const BlogPost = solve().BlogPost;
-const post = new BlogPost('Title','Content',0);
-console.log(post.view());
-console.log(post.view());
-console.log(post.view());
-console.log(post.toString())

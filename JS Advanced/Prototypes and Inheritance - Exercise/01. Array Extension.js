@@ -15,12 +15,3 @@
         return this.reduce((acc, c) => acc + c) / this.length;
     }
 }())
-
-let myArr = [1, 2, 3];
-console.log(myArr.last());
-console.log(myArr.skip(1));
-console.log(myArr.take(2));
-console.log(myArr.sum());
-console.log(myArr.average());
-
-console.log(Array.prototype)

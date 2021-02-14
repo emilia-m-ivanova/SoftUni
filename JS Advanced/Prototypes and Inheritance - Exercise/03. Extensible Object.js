@@ -11,16 +11,3 @@ function solve() {
     }
     return instance;
 }
-
-
-let template = {
-    extensionMethod: function () {
-    },
-    extensionProperty: 'someString'
-}
-
-let result = solve();
-result.extend(template)
-console.log(result);
-
-
