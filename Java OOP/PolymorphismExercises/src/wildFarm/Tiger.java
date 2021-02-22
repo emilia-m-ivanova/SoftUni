@@ -1,4 +1,4 @@
-package WildFarm;
+package wildFarm;
 
 public class Tiger extends Feline {
     protected Tiger(String animalType, String animalName, double animalWeight, String livingRegion) {

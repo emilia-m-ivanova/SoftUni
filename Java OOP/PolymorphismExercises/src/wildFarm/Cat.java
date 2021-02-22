@@ -1,4 +1,4 @@
-package WildFarm;
+package wildFarm;
 
 import java.text.DecimalFormat;
 

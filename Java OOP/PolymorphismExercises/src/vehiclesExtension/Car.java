@@ -1,4 +1,4 @@
-package VehiclesExtension;
+package vehiclesExtension;
 
 public class Car extends Vehicle {
     public Car(double fuelQuantity, double consumptionLperKm,double tankCapacity) {

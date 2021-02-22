@@ -1,4 +1,4 @@
-package WildFarm;
+package wildFarm;
 
 public abstract class Feline extends Mammal {
     protected Feline(String animalType, String animalName, double animalWeight, String livingRegion) {

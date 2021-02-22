@@ -1,6 +1,4 @@
-package VehiclesExtension;
-
-import java.text.DecimalFormat;
+package vehiclesExtension;
 
 public class Truck extends Vehicle {
     public Truck(double fuelQuantity, double consumptionLperKm,double tankCapacity) {

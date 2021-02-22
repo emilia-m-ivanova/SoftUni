@@ -1,4 +1,4 @@
-package VehiclesExtension;
+package vehiclesExtension;
 
 import java.text.DecimalFormat;
 

@@ -1,4 +1,4 @@
-package WildFarm;
+package wildFarm;
 
 public class Mouse extends Mammal{
     protected Mouse(String animalType, String animalName, double animalWeight,String region) {

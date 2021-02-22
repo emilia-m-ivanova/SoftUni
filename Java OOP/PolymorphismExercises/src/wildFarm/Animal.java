@@ -1,4 +1,4 @@
-package WildFarm;
+package wildFarm;
 
 public abstract class Animal {
     private String animalName;

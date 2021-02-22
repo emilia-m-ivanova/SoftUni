@@ -1,4 +1,4 @@
-package WildFarm;
+package wildFarm;
 
 public class Zebra extends Mammal {
     protected Zebra(String animalType, String animalName, double animalWeight,String region) {
