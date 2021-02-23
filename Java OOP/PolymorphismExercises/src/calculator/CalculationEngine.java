@@ -23,9 +23,9 @@ public class CalculationEngine {
     }
 
     void pushOperation(Operation operation) {
-//        if(operation == null){
-//            return;
-//        }
+        if(operation == null){
+            return;
+        }
         if (operation.isCompleted()) {
             this.pushNumber(operation.getResult());
         } else {
