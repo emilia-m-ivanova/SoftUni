@@ -10,7 +10,7 @@ public class Seat extends CarImpl implements Sellable {
 
     @Override
     public Double getPrice() {
-        return null;
+        return this.price;
     }
 
     @Override
