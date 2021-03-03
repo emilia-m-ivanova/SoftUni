@@ -1,28 +1,38 @@
-function loadRecipes() {
-    const url = 'http://localhost:3030/jsonstore/cookbook/recipes';
-    const body = document.querySelector('main');
+function loadPage() {
+    if (sessionStorage.getItem('userToken') !== null) {
+        document.getElementById('user').style.display = 'inline';
+    } else {
+        document.getElementById('guest').style.display = 'inline';
+    }
+    document.getElementById('logoutBtn').addEventListener('click', logOut);
+    loadRecipes();
+}
 
-    fetch(url)
-        .then(r => r.json())
-        .then(r => {
-            body.innerHTML = '';
-            Object.entries(r).forEach(e => {
-                const img = createElement('img', {src: e[1].img});
-                const name = createElement('h2', {}, e[1].name);
-                const element = createElement('article', {className: 'preview'},
-                    createElement('div', {className: 'title'},
-                        name),
-                    createElement('div', {className: 'small'},
-                        img));
-                element.addEventListener('click', () => showDetails(element, e[0], name, img));
-                body.appendChild(element);
-            })
+async function loadRecipes() {
+    const url = 'http://localhost:3030/data/recipes';
+    const body = document.querySelector('main');
+    try {
+        const response = await fetch(url)
+        const data = await response.json();
+        body.innerHTML = '';
+        Object.values(data).forEach(e => {
+            const img = createElement('img', {src: e.img});
+            const name = createElement('h2', {}, e.name);
+            const element = createElement('article', {className: 'preview'},
+                createElement('div', {className: 'title'},
+                    name),
+                createElement('div', {className: 'small'},
+                    img));
+            element.addEventListener('click', () => showDetails(element, e._id, name, img));
+            body.appendChild(element);
         })
-        .catch(error=>alert(error.message));
+    } catch (error) {
+        alert(error.message);
+    }
 }
 
 function showDetails(current, id, name, img) {
-    const url = 'http://localhost:3030/jsonstore/cookbook/details/' + id;
+    const url = 'http://localhost:3030/data/recipes/' + id;
     current.innerHTML = '';
     current.className = '';
     current.appendChild(name);
@@ -56,8 +66,25 @@ function showDetails(current, id, name, img) {
     current.appendChild(div2);
 }
 
+async function logOut() {
+    const url = 'http://localhost:3030/users/logout';
+    const response = await fetch(url, {
+        method: 'get',
+        headers: {
+            'X-Authorization': sessionStorage.userToken,
+        },
+    });
+    if (response.ok) {
+        sessionStorage.clear();
+        location.pathname = location.pathname.replace('login', 'index');
+    }else {
+        const parsed = response.json();
+        alert(parsed.message);
+    }
+}
+
 window.addEventListener('load', () => {
-    loadRecipes();
+    loadPage();
 })
 
 function createElement(tagName, attributes, ...content) {

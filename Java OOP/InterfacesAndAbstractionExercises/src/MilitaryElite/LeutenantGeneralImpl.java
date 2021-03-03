@@ -5,10 +5,10 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class LieutenantGeneralImpl extends PrivateImpl {
+public class LeutenantGeneralImpl extends PrivateImpl {
     private Set<PrivateImpl> set;
 
-    public LieutenantGeneralImpl(int id, String firstName, String lastName, double salary) {
+    public LeutenantGeneralImpl(int id, String firstName, String lastName, double salary) {
         super(id, firstName, lastName, salary);
         this.set = new LinkedHashSet<>();
     }

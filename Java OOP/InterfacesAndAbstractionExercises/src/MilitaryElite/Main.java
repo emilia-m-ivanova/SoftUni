@@ -52,7 +52,7 @@ public class Main {
     }
 
     private static void addLieutenant(List<SoldierImpl> soldiers, String[] tokens) {
-        LieutenantGeneralImpl lieutenant = new LieutenantGeneralImpl(Integer.parseInt(tokens[1]), tokens[2], tokens[3], Double.parseDouble(tokens[4]));
+        LeutenantGeneralImpl lieutenant = new LeutenantGeneralImpl(Integer.parseInt(tokens[1]), tokens[2], tokens[3], Double.parseDouble(tokens[4]));
         soldiers.add(lieutenant);
         for (int i = 5; i < tokens.length; i++) {
             int finalI = i;
