@@ -43,3 +43,27 @@ table tbody tr:nth-child(even) button{
 table tr:hover{
     text-decoration: underline;
 }
+
+form {
+    width: 70%;
+    margin: 0 auto;
+}
+
+form input[type=text]{
+    margin: 15px;
+}
+
+form input[type=submit]{
+    margin-left: 40%;
+    border:1px solid #234465;
+    border-radius: 4px;
+    background-color: #234465;
+    color: white;
+    font-size: 18px;
+    padding: 0px 40px;
+}
+
+form label{
+    margin-left: 45%;
+    text-decoration: underline;
+}

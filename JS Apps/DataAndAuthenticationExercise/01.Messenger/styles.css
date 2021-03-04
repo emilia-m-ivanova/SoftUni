@@ -31,15 +31,15 @@ label {
 }
 #author,
 #content {
-    width: 30em;
+    display: inline-block;
 }
 #controls {
     width: 38em;
 }
 #submit, #refresh {
-    display: inline-block;
+    display: table-column;
 }
-#submit { 
+#submit {
     margin: 32px;
 }
 
