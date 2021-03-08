@@ -3,6 +3,7 @@ package MilitaryElite;
 import MilitaryElite.Interfaces.Engineer;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -19,13 +20,9 @@ public class EngineerImpl extends SpecialisedSoldierImpl implements Engineer {
         this.repairs.add(repair);
     }
 
-    public Collection<Repair> getRepairs(){
-        return this.repairs;
-    }
-
     @Override
-    public Set<Repair> repairs() {
-        return this.repairs;
+    public Collection<Repair> getRepairs(){
+        return Collections.unmodifiableCollection(this.repairs);
     }
 
     @Override

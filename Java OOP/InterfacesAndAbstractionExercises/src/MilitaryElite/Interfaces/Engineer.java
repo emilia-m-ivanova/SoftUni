@@ -2,8 +2,9 @@ package MilitaryElite.Interfaces;
 
 import MilitaryElite.Repair;
 
+import java.util.Collection;
 import java.util.Set;
 
 public interface Engineer {
-    Set<Repair> repairs();
+    Collection<Repair> getRepairs();
 }
