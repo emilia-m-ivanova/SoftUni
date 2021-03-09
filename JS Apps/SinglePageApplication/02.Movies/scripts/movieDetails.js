@@ -20,17 +20,17 @@ async function showDetails(id) {
     detailsSection.style.display = '';
     const [responseDetails,responseLikes] = await Promise.all([
         fetch('http://localhost:3030/data/movies/' + id),
-        fetch('http://localhost:3030/data/likes/' + id),
+        fetch('http://localhost:3030/data/likes'),
     ])
-    // const response = await fetch('http://localhost:3030/data/movies/' + id);
     const data = await responseDetails.json();
     if (!responseDetails.ok) {
-        return data.message;
+        return alert(data.message);
     }
+    const likes = await responseLikes.json();
     if(responseLikes.ok){
-        const likes = await responseDetails.json();
+        numberOfLikes = likes.filter(e=>e.movieId===id).length;
     }else{
-        numberOfLikes = 0;
+       alert(likes.message);
     }
     detailsSection.querySelector('h1').textContent = 'Movie title: ' + data.title;
     detailsSection.querySelector('img').src = data.img;
@@ -47,4 +47,7 @@ async function showDetails(id) {
         likeBtn.style.display = '';
     }
     likeBtn.parentNode.id = id;
+    if(likes.some(e=>e._ownerId===sessionStorage.id&&e.movieId===id)||!sessionStorage.id){
+        likeBtn.style.display = 'none';
+    }
 }
