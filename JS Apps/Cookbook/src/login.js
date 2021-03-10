@@ -1,4 +1,21 @@
-document.querySelector('form').addEventListener('submit', (ev) => {
+import {loadRecipes} from "./loadRecipes.js";
+
+export {showLogin,setupLogin};
+
+let main;
+let loginSection;
+
+function setupLogin(mainParam, loginParam){
+    main = mainParam;
+    loginSection = loginParam;
+}
+
+function showLogin(){
+    main.innerHTML = loginSection.innerHTML;
+    main.querySelector('form').addEventListener('submit', onSubmitLogin);
+}
+
+function onSubmitLogin (ev) {
     ev.preventDefault();
     const formData = [...new FormData(ev.target).entries()];
     const data = formData.reduce((acc, current) => {
@@ -6,7 +23,7 @@ document.querySelector('form').addEventListener('submit', (ev) => {
         return acc;
     }, {});
     login(data);
-})
+}
 
 async function login(data) {
     const url = 'http://localhost:3030/users/login';
@@ -20,7 +37,8 @@ async function login(data) {
     const parsed = await response.json();
     if (response.ok) {
         sessionStorage.setItem('userToken', parsed.accessToken);
-        location.pathname = location.pathname.replace('login', 'index');
+        sessionStorage.setItem('id', parsed._id);
+        loadRecipes();
     } else {
         alert(parsed.message);
     }

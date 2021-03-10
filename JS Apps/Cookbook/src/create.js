@@ -1,4 +1,21 @@
-document.querySelector('form').addEventListener('submit', (ev) => {
+import {loadRecipes} from "./loadRecipes.js";
+
+export {showCreate, setupCreate};
+
+let main;
+let createSection;
+
+function setupCreate(mainParam, createParam) {
+    main = mainParam;
+    createSection = createParam;
+}
+
+function showCreate() {
+    main.innerHTML = createSection.innerHTML;
+    main.querySelector('form').addEventListener('submit', onSubmitCreate);
+}
+
+function onSubmitCreate(ev) {
     ev.preventDefault();
     const formData = [...new FormData(ev.target).entries()];
     const data = formData.reduce((acc, current, index) => {
@@ -10,7 +27,7 @@ document.querySelector('form').addEventListener('submit', (ev) => {
         return acc;
     }, {});
     postRecipe(data);
-})
+}
 
 async function postRecipe(data) {
     const url = 'http://localhost:3030/data/recipes';
@@ -23,6 +40,6 @@ async function postRecipe(data) {
         body: JSON.stringify(data),
     });
     if (response.ok) {
-        location.pathname = location.pathname.replace('create', 'index');
+        loadRecipes();
     }
 }
