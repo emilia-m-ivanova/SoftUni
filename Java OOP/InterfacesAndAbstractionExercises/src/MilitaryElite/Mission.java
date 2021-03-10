@@ -16,7 +16,7 @@ public class Mission {
     }
 
     public void completeMission(){
-        this.state = State.finished;
+        this.state = State.Finished;
     }
 
     @Override
