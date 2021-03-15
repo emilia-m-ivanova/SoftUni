@@ -41,7 +41,7 @@ describe('E2E tests', function () {
 
     before(async () => {
         if (DEBUG) {
-            browser = await chromium.launch({ headless: false, slowMo: 500 });
+            browser = await chromium.launch({ headless: false, slowMo: 2500 });
         } else {
             browser = await chromium.launch();
         }
@@ -206,7 +206,7 @@ describe('E2E tests', function () {
 
             await page.fill('[name="title"]', mock.title);
             await page.fill('[name="description"]', mock.description);
-            await page.fill('[name="imageURL"]', mock.img);
+            await page.fill('[name="img"]', mock.img);
 
             const [response] = await Promise.all([
                 page.waitForResponse(endpoint),
