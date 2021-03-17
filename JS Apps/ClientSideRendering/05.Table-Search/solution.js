@@ -34,6 +34,7 @@ function onClick(input, data, table) {
                 data[k].active = true :
                 data[k].active = false)
     });
+    input.value = '';
     render(tableTemplate(Object.values(data)), table)
 }
 
