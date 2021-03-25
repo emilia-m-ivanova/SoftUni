@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class TransactionImpl implements Comparable<TransactionImpl>, Transaction {
 
     private int id;
@@ -18,16 +20,22 @@ public class TransactionImpl implements Comparable<TransactionImpl>, Transaction
         return 0;
     }
 
+
     @Override
-    public boolean equals(Object other) {
-        Class<?> clazz = other.getClass();
-        if(clazz!=TransactionImpl.class){
-            return false;
-        }
-        Transaction that = (Transaction) other;
-        return this.getId() == that.getId() && this.getStatus().equals(that.getStatus()) &&
-                this.getFrom().equals(that.getFrom()) && this.getTo().equals(that.getTo()) &&
-                this.getAmount() == that.getAmount();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TransactionImpl that = (TransactionImpl) o;
+        return id == that.id &&
+                Double.compare(that.amount, amount) == 0 &&
+                status == that.status &&
+                Objects.equals(from, that.from) &&
+                Objects.equals(to, that.to);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, status, from, to, amount);
     }
 
     @Override
