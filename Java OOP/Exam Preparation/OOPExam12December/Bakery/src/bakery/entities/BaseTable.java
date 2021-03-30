@@ -8,7 +8,7 @@ import bakery.entities.tables.interfaces.Table;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class BaseTable implements Table {
+public abstract class BaseTable implements Table {
     private Collection<BakedFood> foodOrders;
     private Collection<Drink> drinkOrders;
     private int tableNumber;
@@ -27,7 +27,7 @@ public class BaseTable implements Table {
     }
 
     private void setCapacity(int capacity) {
-        if (capacity <= 0) {
+        if (capacity < 0) {
             throw new IllegalArgumentException(ExceptionMessages.INVALID_TABLE_CAPACITY);
         }
         this.capacity = capacity;

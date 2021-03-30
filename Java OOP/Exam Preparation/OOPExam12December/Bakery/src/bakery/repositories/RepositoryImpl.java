@@ -2,15 +2,15 @@ package bakery.repositories;
 
 import bakery.repositories.interfaces.Repository;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 
-public class RepositoryImpl<T> implements Repository<T> {
-    private Collection<T> models;
+public abstract class RepositoryImpl<T> implements Repository<T> {
+    private final LinkedHashSet<T> models;
 
     public RepositoryImpl() {
-        this.models = new ArrayList<>();
+        this.models = new LinkedHashSet<>();
     }
 
     @Override

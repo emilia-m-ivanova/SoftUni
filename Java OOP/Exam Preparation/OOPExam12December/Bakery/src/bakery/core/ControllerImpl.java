@@ -12,9 +12,9 @@ import bakery.repositories.interfaces.*;
 import java.util.Collection;
 
 public class ControllerImpl implements Controller {
-    private FoodRepository<BakedFood> foodRepository;
-    private DrinkRepository<Drink> drinkRepository;
-    private TableRepository<Table> tableRepository;
+    private final FoodRepository<BakedFood> foodRepository;
+    private final DrinkRepository<Drink> drinkRepository;
+    private final TableRepository<Table> tableRepository;
     private double income = 0;
 
     public ControllerImpl(FoodRepository<BakedFood> foodRepository, DrinkRepository<Drink> drinkRepository, TableRepository<Table> tableRepository) {
@@ -103,7 +103,7 @@ public class ControllerImpl implements Controller {
         BakedFood food = this.foodRepository.getByName(foodName);
 
         if (table == null || !table.isReserved()) {
-            return "Could not find table " + tableNumber;
+            return String.format(OutputMessages.WRONG_TABLE_NUMBER,tableNumber);
         }
 
         if(food==null){
@@ -120,7 +120,7 @@ public class ControllerImpl implements Controller {
         Drink drink = this.drinkRepository.getByNameAndBrand(drinkName,drinkBrand);
 
         if (table == null || !table.isReserved()) {
-            return "Could not find table " + tableNumber;
+            return String.format(OutputMessages.WRONG_TABLE_NUMBER,tableNumber);
         }
 
         if(drink==null){
@@ -134,6 +134,9 @@ public class ControllerImpl implements Controller {
     @Override
     public String leaveTable(int tableNumber) {
         Table table = this.tableRepository.getByNumber(tableNumber);
+        if (table == null || !table.isReserved()) {
+            return String.format(OutputMessages.WRONG_TABLE_NUMBER,tableNumber);
+        }
         double bill = table.getBill();
         income+=bill;
         table.clear();

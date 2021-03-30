@@ -3,7 +3,7 @@ package bakery.entities;
 import bakery.common.ExceptionMessages;
 import bakery.entities.drinks.interfaces.Drink;
 
-public class BaseDrink implements Drink {
+public abstract class BaseDrink implements Drink {
     private String name;
     private int portion;
     private double price;
