@@ -63,7 +63,7 @@ public class ControllerImpl implements Controller {
         } else if (peripheralType.equals("Mouse")) {
             peripheral = new Mouse(id, manufacturer, model, price, overallPerformance, connectionType);
         } else {
-            throw new IllegalArgumentException(ExceptionMessages.INVALID_COMPONENT_TYPE);
+            throw new IllegalArgumentException(ExceptionMessages.INVALID_PERIPHERAL_TYPE);
         }
         this.peripherals.add(peripheral);
         computer.addPeripheral(peripheral);

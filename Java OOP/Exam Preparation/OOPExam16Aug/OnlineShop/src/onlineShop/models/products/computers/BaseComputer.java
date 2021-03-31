@@ -58,7 +58,7 @@ public abstract class BaseComputer extends BaseProduct implements Computer {
                 .orElse(null);
         if (componentExists != null) {
             throw new IllegalArgumentException(String.format(ExceptionMessages.EXISTING_COMPONENT,
-                    component.getClass().getSimpleName(), this.getClass().getSimpleName(), componentExists.getId()));
+                    component.getClass().getSimpleName(), this.getClass().getSimpleName(), this.getId()));
         }
         this.components.add(component);
     }
@@ -85,7 +85,7 @@ public abstract class BaseComputer extends BaseProduct implements Computer {
                 .orElse(null);
         if (peripheralExists != null) {
             throw new IllegalArgumentException(String.format(ExceptionMessages.EXISTING_PERIPHERAL,
-                    peripheralExists.getClass().getSimpleName(), this.getClass().getSimpleName(), peripheralExists.getId()));
+                    peripheralExists.getClass().getSimpleName(), this.getClass().getSimpleName(), this.getId()));
         }
         this.peripherals.add(peripheral);
     }
