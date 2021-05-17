@@ -79,4 +79,5 @@ MODIFY `last_login_time` DATETIME DEFAULT NOW();
 
 ALTER TABLE `users`
 DROP PRIMARY KEY,
-ADD PRIMARY KEY `pk_users` (`id`);
+ADD PRIMARY KEY `pk_users` (`id`),
+ADD CONSTRAINT `uq_username` UNIQUE(username);
